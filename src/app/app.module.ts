@@ -9,12 +9,14 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ListarPeticionesComponent } from './listar-peticiones/listar-peticiones.component';
+import { ListarTipoCambioFechaComponent } from './listar-tipo-cambio-fecha/listar-tipo-cambio-fecha.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListarTipoCambioComponent,
-    ListarPeticionesComponent
+    ListarPeticionesComponent,
+    ListarTipoCambioFechaComponent
   ],
   imports: [
     BrowserModule,

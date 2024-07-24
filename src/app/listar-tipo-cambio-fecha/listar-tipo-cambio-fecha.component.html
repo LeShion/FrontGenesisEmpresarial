@@ -1,0 +1,47 @@
+<h2>Lista de Tipo de Cambio en una Fecha, ordenado Descendente</h2>
+
+<form #form="ngForm" (ngSubmit)="enviarFecha()">
+  <div class="form-group">
+    <label for="fechaInicial">Fecha:</label>
+    <input type="date" class="form-control" id="fechaInicial" name="fechaInicial" [(ngModel)]="fecha_ini" #fechaIni="ngModel" max="{{ maxFecha }}" required>
+    <div class="alert alert-danger" *ngIf="fechaIni.invalid && fechaIni.touched">
+      La fecha es obligatoria.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Enviar Fecha</button>
+  <button type="button" class="btn btn-secondary" (click)="limpiarData()">Limpiar Datos</button>
+
+  <div *ngIf="isLoading" class="spinner-border" role="status">
+    <span class="sr-only">Cargando...</span>
+  </div>
+
+  <div *ngIf="alertaExito" class="alert alert-success" role="alert">
+    ¡Datos encontrados con éxito!
+  </div>
+
+  <!-- <div *ngIf="!fecha_ini" class="alert alert-danger" role="alert">
+    Por favor, selecciona una fecha.
+  </div> -->
+
+  <table class="table table-striped" *ngIf="tiposCambio.length > 0">
+    <thead class="table-dark">
+      <tr>
+        <th>Fecha</th>
+        <th>Compra</th>
+        <th>Venta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tc of tiposCambio | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalItems }">
+        <td>{{ tc.fecha }}</td>
+        <td>{{ tc.compra }}</td>
+        <td>{{ tc.venta }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+</form>

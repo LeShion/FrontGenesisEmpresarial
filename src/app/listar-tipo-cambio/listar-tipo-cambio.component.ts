@@ -60,7 +60,7 @@ export class ListarTipoCambioComponent implements OnInit {
 
   enviarFechas() {
     if (!this.fecha_ini || !this.fecha_final) {
-      alert("Por favor, selecciona ambas fechas.");
+      //alert("Por favor, selecciona ambas fechas.");
       return;
     }
     if (this.fecha_ini > this.fecha_final) {
