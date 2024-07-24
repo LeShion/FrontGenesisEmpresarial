@@ -1,0 +1,28 @@
+<h2>Lista de Peticiones Realizadas</h2>
+
+<!-- Tabla con peticiones realizadas -->
+
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>No. Peticion</th>
+            <th>Fecha</th>
+            <th>TC Venta</th>
+            <th>TC Compra</th>
+            <th>Fecha de Petición</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let peticion of peticiones | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalItems }">
+            <td>{{peticion.peticion}}</td>
+            <td>{{peticion.fecha_tipo_cambio}}</td>
+            <td>{{peticion.tc_venta}}</td>
+            <td>{{peticion.tc_compra}}</td>
+            <td>{{peticion.fecha_peticion}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="pagination">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
